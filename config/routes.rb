@@ -1,10 +1,14 @@
 RabbitOnRails::Application.routes.draw do
 
-  
-  get "static_pages/home"
+  root :to => "static_pages#home"
 
-  match "publish" => "home#publish"
-  match "get" => "home#get"
+  get "static_pages/home"
+  
+
+  match "static_pages/publish" => "static_pages#publish"
+  match "static_pages/get" => "static_pages#get"
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

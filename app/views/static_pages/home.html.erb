@@ -2,7 +2,7 @@
 
 <h2>Publish a message</h2>
 
-<% form_tag({:controller => "static_pages", :action => "publish"}, :method => "post") do %>
+<%= form_tag( :action => "publish", :method => "post") do %>
   <%= label_tag(:message, "Message to publish:") %>
   <%= text_field_tag(:message) %>
   <%= submit_tag("Publish") %>
@@ -14,10 +14,10 @@
 
 <h2>Get a message</h2>
 
-<% form_tag({:controller => "static_pages", :action => "get"}, :method => "post") do %>
+<%= form_tag({:controller => "static_pages", :action => "get"}, :method => "post") do -%>
   <%= submit_tag("Get one") %>
 <% end %>
 
-<% if flash[:got] %>
+<% if flash[:got] -%>
   <p>Got message: <%= h(flash[:got]) %></p>
 <% end %>

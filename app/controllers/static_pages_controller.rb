@@ -4,7 +4,8 @@ require 'json'
 class StaticPagesController < ApplicationController
   def home
   end
- 
+  def create
+  end
 
 
   # Extracts the connection string for the rabbitmq service from the
@@ -56,7 +57,7 @@ class StaticPagesController < ApplicationController
     # Send the message from the form's input box to the "messages"
     # queue, via the nameless exchange.  The name of the queue to
     # publish to is specified in the routing key.
-    HomeController.nameless_exchange.publish params[:message],
+    StaticPagesController.nameless_exchange.publish params[:message],
                                              :key => "messages"
     # Notify the user that we published.
     flash[:published] = true
@@ -65,7 +66,7 @@ class StaticPagesController < ApplicationController
 
   def get
     # Synchronously get a message from the queue
-    msg = HomeController.messages_queue.pop
+    msg = StaticPagesController.messages_queue.pop
     # Show the user what we got
     flash[:got] = msg[:payload]
     redirect_to home_index_path
