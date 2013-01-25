@@ -1,5 +1,7 @@
 RabbitOnRails::Application.routes.draw do
 
+  get "static_pages/home"
+
   root :to => "home#index"
 
   get "home/index"
